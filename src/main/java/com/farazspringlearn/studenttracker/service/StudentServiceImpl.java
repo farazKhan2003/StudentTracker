@@ -1,4 +1,17 @@
 package com.farazspringlearn.studenttracker.service;
 
-public class StudentServiceImpl {
+import com.farazspringlearn.studenttracker.model.Student;
+import com.farazspringlearn.studenttracker.repository.StudentRepository;
+import com.farazspringlearn.studenttracker.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class StudentServiceImpl implements StudentService {
+
+    @Autowired
+    private StudentRepository studentrepository;
+
+    @Override
+    public Student saveStudent(Student student) {
+        return studentrepository.save(student);
+    }
 }
