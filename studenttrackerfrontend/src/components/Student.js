@@ -23,7 +23,7 @@ export default function Student() {
             id="student-name"
             label="Name"
             variant="outlined"
-            
+            fullWidth
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -31,7 +31,7 @@ export default function Student() {
             id="student-email"
             label="Email"
             variant="outlined"
-            
+            fullWidth
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           />
