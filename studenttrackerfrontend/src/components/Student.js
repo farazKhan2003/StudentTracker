@@ -13,6 +13,14 @@ export default function Student() {
     e.preventDefault()
     const student={name, email}
     console.log(student)
+    fetch("http://localhost:8080/student/add",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(student)
+      
+    }).then(()=>{
+      console.log("New Student Added:")
+    })
   }
 
   const redBase = '#d32f2f'
