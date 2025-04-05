@@ -12,14 +12,15 @@ export default function Student() {
   const handleClick =(e) => {
     e.preventDefault()
     const student={name, email}
-    console.log(student)
     fetch("http://localhost:8080/student/add",{
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(student)
       
     }).then(()=>{
-      console.log("New Student Added:")
+      fetch("http://localhost:8080/student/getall")
+      .then((response) => response.json())
+      .then((result) => setStudents(result))
     })
   }
   
@@ -84,7 +85,7 @@ export default function Student() {
       </Paper>
       <h1>Students</h1>
 
-      <Paper evelation={3} style={paperStyle}>
+      <Paper elevation={3} style={paperStyle}>
           
           {students.map(student =>( 
             <Paper elevation={6} style={{margin:"10px", padding:"15px", textAlign:"left"}} key ={student.id}>
