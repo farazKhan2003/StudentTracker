@@ -4,8 +4,8 @@ import { TextField, Container, Paper, Box } from '@mui/material';
 
 export default function Student() {
   const paperStyle = { padding: '50px 20px', width: 600, margin: '20px auto' };
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [name, setName] = useState('Faraz');
+  const [email, setEmail] = useState('kfaraz@hotmail.co.uk');
   const [students, setStudents] = useState([]);
 
   return (
