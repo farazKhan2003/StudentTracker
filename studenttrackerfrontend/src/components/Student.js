@@ -11,6 +11,7 @@ export default function Student() {
   return (
     <Container>
       <Paper elevation={3} style={paperStyle}>
+          <h1 style={{color:"LightSlateGrey"}}><u>Add Student:</u></h1>
         <Box
           component="form"
           sx={{
