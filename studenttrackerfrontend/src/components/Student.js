@@ -38,6 +38,7 @@ export default function Student() {
           />
         </Box>
         {name}
+        {'\n'}
         {email}
       </Paper>
     </Container>
