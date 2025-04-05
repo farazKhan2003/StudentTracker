@@ -9,6 +9,12 @@ export default function Student() {
   const [email, setEmail] = useState('');
   const [students, setStudents] = useState([]);
 
+  const handleClick =(e) => {
+    e.preventDefault()
+    const student={name, email}
+    console.log(student)
+  }
+
   const redBase = '#d32f2f'
   const redMain = alpha(redBase, 0.7);
   const theme = createTheme({
@@ -27,7 +33,7 @@ export default function Student() {
   return (
     <ThemeProvider theme={theme}>
     <Container>
-      <Paper elevation={3} style={paperStyle}>
+      <Paper elevation={4} style={paperStyle}>
           <h1 style={{color:"LightSlateGrey"}}><u>Add Student:</u></h1>
         <Box
           component="form"
@@ -53,15 +59,14 @@ export default function Student() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <Button variant="contained" color="red">
+          <Button variant="contained" color="red" onClick={handleClick}>
   Submit 
 </Button>
         </Box>
-
-
-        {name}
-        {'\n'}
-        {email}
+        <Box><label>{name}</label></Box>
+        <Box> {'\n'} <label>{email} </label></Box>
+       
+       
       </Paper>
     </Container>
     </ThemeProvider>
