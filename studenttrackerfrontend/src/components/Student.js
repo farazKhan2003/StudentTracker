@@ -5,7 +5,7 @@ import { TextField, Container, Paper, Box } from '@mui/material';
 export default function Student() {
   const paperStyle = { padding: '50px 20px', width: 600, margin: '20px auto' };
   const [name, setName] = useState('');
-  const [address, setAddress] = useState('');
+  const [email, setEmail] = useState('');
   const [students, setStudents] = useState([]);
 
   return (
@@ -33,8 +33,8 @@ export default function Student() {
             label="Email"
             variant="outlined"
             fullWidth
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </Box>
       </Paper>
