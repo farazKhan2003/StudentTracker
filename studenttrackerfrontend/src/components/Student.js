@@ -18,11 +18,13 @@ export default function Student() {
       body:JSON.stringify(student)
       
     }).then(()=>{
+      setName('');
+      setEmail('');
       fetch("http://localhost:8080/student/getall")
       .then((response) => response.json())
       .then((result) => setStudents(result))
-    })
-  }
+    });
+  };
   
 
   React.useEffect(()=> {
@@ -31,8 +33,10 @@ export default function Student() {
     .then((result) => {
       setStudents(result);
     }
-  )
-  },[])
+  ) .catch((error) => {
+    console.error("Error fetching student data", error);
+  });
+  },[]);
 
   const redBase = '#d32f2f'
   const redMain = alpha(redBase, 0.7);
@@ -86,17 +90,22 @@ export default function Student() {
       <h1>Students</h1>
 
       <Paper elevation={3} style={paperStyle}>
-          
-          {students.map(student =>( 
-            <Paper elevation={6} style={{margin:"10px", padding:"15px", textAlign:"left"}} key ={student.id}>
+          {
+             students.length == 0 ? (
+              <p>No Student data found</p>
+            ) : (
+          students.map((student) => ( 
+            <Paper elevation={6} style={{margin:"10px", padding:"15px", textAlign:"left"}} key ={student.id}
+            >
               ID: {student.id}<br/>
               Name: {student.name}<br/>
               Email Address: {student.email}<br/> 
 
-            </Paper>))}
+            </Paper>)))}
             
-      </Paper>
+            
+          </Paper>
     </Container>
     </ThemeProvider>
-  );
+          );
 }
