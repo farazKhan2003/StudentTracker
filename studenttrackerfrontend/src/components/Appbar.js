@@ -6,12 +6,20 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button'
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Appbar() {
+  const navigate = useNavigate();
 
-  const handleClickLogin = (e) => {
-    e.preventDefault()
+  const handleClickLogin = () => {
+    navigate('/login');
+  };
+
+  const handleClickHome = () => {
+    navigate('/')
   }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -28,8 +36,8 @@ export default function Appbar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Student Tracker
           </Typography>
-          <Button color="inherit">Login</Button>
-
+          <Button color="inherit" onClick={handleClickLogin}>Admin Login</Button>
+          <Button color="inherit" onClick={handleClickHome}>Home</Button>
         </Toolbar>
       </AppBar>
     </Box>

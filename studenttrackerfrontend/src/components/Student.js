@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { TextField, Container, Paper, Box, Button, ThemeProvider } from '@mui/material';
+import { TextField, Container, Paper, Box, Button, ThemeProvider, Typography } from '@mui/material';
 import { createTheme, alpha, getContrastRatio } from '@mui/material/styles';
 
 export default function Student() {
@@ -87,8 +87,9 @@ export default function Student() {
 </Button>
         </Box>
       </Paper>
-      <h1>Students</h1>
-
+      <Box display="flex" justifyContent="center" alignItems="center">
+      <Typography variant="h4">Students</Typography>
+    </Box>
       <Paper elevation={3} style={paperStyle}>
           {
              students.length === 0 ? (

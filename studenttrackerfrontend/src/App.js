@@ -1,14 +1,20 @@
-import './App.css';
-import AppBar from './components/Appbar'
-import Student from './components/Student'
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Student from './components/Student';
+import Login from './components/Login';
+import Appbar from './components/Appbar';
 
-function App() {
+export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
-    <div className="App">
-      <AppBar></AppBar>
-      <Student></Student>
-    </div>
+    <Router>
+      <Appbar />
+      <Routes>
+        <Route path="/" element={<Student/>} />
+        <Route path="/login" element={<Login onLogin={setIsLoggedIn} />} />
+      </Routes>
+    </Router>
+    
   );
 }
-
-export default App;
