@@ -5,8 +5,13 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import Button from '@mui/material/Button'
 
 export default function Appbar() {
+
+  const handleClickLogin = (e) => {
+    e.preventDefault()
+  }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -23,7 +28,8 @@ export default function Appbar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Student Tracker
           </Typography>
-          
+          <Button color="inherit">Login</Button>
+
         </Toolbar>
       </AppBar>
     </Box>

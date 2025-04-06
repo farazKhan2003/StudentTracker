@@ -9,7 +9,7 @@ export default function Student() {
   const [email, setEmail] = useState('');
   const [students, setStudents] = useState([]);
 
-  const handleClick =(e) => {
+  const handleClickSubmit =(e) => {
     e.preventDefault()
     const student={name, email}
     fetch("http://localhost:8080/student/add",{
@@ -82,7 +82,7 @@ export default function Student() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <Button variant="contained" color="red" onClick={handleClick}>
+          <Button variant="contained" color="red" onClick={handleClickSubmit}>
   Submit 
 </Button>
         </Box>
@@ -91,7 +91,7 @@ export default function Student() {
 
       <Paper elevation={3} style={paperStyle}>
           {
-             students.length == 0 ? (
+             students.length === 0 ? (
               <p>No Student data found</p>
             ) : (
           students.map((student) => ( 
