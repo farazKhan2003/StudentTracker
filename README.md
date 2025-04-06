@@ -21,3 +21,8 @@ This project is a full-stack application that enters and reads student data and 
 ### IDEs:
 * VSCode - for front end
 * IntelliJ - for back end
+
+## Setup
+1) run backend using ./mvnw spring-boot:run or you can run the StudentTrackerApplication
+2) run 'npm start' in vscode
+3) Run MySQL workbench if you want to query the database
