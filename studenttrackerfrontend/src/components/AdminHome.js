@@ -1,13 +1,17 @@
 import * as React from 'react';
 import { useState, useEffect} from 'react';
-import { TextField, Container, Paper, Box, Button, ThemeProvider, Typography } from '@mui/material';
+import { TextField, Container, Paper, Box, Button, ThemeProvider, Typography, Snackbar, IconButton } from '@mui/material';
 import { createTheme, alpha, getContrastRatio } from '@mui/material/styles';
+import CloseIcon from '@mui/icons-material/Close';
+
 
 export default function AdminHome( { onAdminLogin }) {
   const paperStyle = { padding: '50px 20px', width: 600, margin: '20px auto' };
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [students, setStudents] = useState([]);
+  const [open, setOpen] = React.useState(false);
+  
 
   const fetchStudents = () => {
     fetch("http://localhost:8080/student/getall")
@@ -44,14 +48,42 @@ export default function AdminHome( { onAdminLogin }) {
   },[]);
 
   const handleDelete = (id) => {
-    const confirmed = window.confirm("Are you sure you want to delete the student with id: {$id}?");
+    const confirmed = window.confirm(`Are you sure you want to delete the student with id: ${id}?`);
+
     if (!confirmed) return;
 
     fetch(`http://localhost:8080/student/delete/${id}`, {
         method: 'DELETE',
-    }).then(() => fetchStudents());
+    }).then(() => {
+         fetchStudents();
+         handleClick();
+    })
     };
   
+    const handleClick = () => {
+        setOpen(true);
+      };
+    
+      const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setOpen(false);
+      };
+
+      const action = (
+        <React.Fragment>
+          <IconButton
+            size="small"
+            aria-label="close"
+            color="inherit"
+            onClick={handleClose}
+          >
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        </React.Fragment>
+      );
 
   const redBase = '#d32f2f'
   const redMain = alpha(redBase, 0.7);
@@ -118,9 +150,18 @@ export default function AdminHome( { onAdminLogin }) {
               Name: {student.name}<br/>
               Email Address: {student.email}<br/> 
             </div>
-            <Button variant="contained" color="red" onClick={() => handleDelete(student.id)}>
+            <Button variant="contained" color="red" onClick={() => {
+                handleDelete(student.id);
+                 }}>
                 Delete
                 </Button>
+                <Snackbar 
+                    open={open}
+                    autoHideDuration={6000}
+                    onClose={handleClose}
+                    message="Student Deleted"
+                    action={action}
+                />
             </Paper>)))}
             
             
