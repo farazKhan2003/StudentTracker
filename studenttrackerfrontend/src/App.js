@@ -10,11 +10,11 @@ export default function App() {
 
   return (
     <Router>
-      <Appbar />
+      <Appbar isAdminLoggedIn={isAdminLoggedIn} setIsAdminLoggedIn={setIsAdminLoggedIn} />
       <Routes>
         <Route path="/" element={<Student/>} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/admin" element={<AdminHome onAdminLogin={setIsAdminLoggedIn} />} />
+        <Route path="/login" element={<Login onLogin={() => setIsAdminLoggedIn(true)} />} />
+        <Route path="/admin" element={<AdminHome />} />
       </Routes>
     </Router>
     

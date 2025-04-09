@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TextField, Button, Paper, Container, Typography } from '@mui/material';
 
-export default function Login() {
+export default function Login( {onLogin} ) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -17,6 +17,7 @@ export default function Login() {
 
     if (result.ok) {
       alert("Login successful");
+      onLogin();
       navigate('/admin');
     } else {
       alert("Your email or password is invalid");

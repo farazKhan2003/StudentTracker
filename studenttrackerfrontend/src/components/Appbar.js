@@ -9,35 +9,39 @@ import Button from '@mui/material/Button'
 import { useNavigate } from 'react-router-dom';
 
 
-export default function Appbar() {
+export default function Appbar( {isAdminLoggedIn, setIsAdminLoggedIn }) {
   const navigate = useNavigate();
 
   const handleClickLogin = () => {
     navigate('/login');
   };
 
-  const handleClickHome = () => {
-    navigate('/')
+  const handleClickLogout = () => {
+    setIsAdminLoggedIn(false);
+    navigate('/');
   }
+
+  
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+          
+  
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Student Tracker
           </Typography>
-          <Button color="inherit" onClick={handleClickLogin}>Admin Login</Button>
-          <Button color="inherit" onClick={handleClickHome}>Home</Button>
+
+          {isAdminLoggedIn ? (
+            <>
+              <Typography sx={{ marginRight: 2 }}>ADMIN MODE</Typography>
+              <Button color="inherit" onClick={handleClickLogout}>Logout</Button>
+            </>
+          ) : (
+            <Button color="inherit" onClick={handleClickLogin}>Admin Login</Button>
+          )}
+
         </Toolbar>
       </AppBar>
     </Box>
