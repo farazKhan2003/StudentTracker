@@ -91,7 +91,7 @@ public class StudentController {
                                                 @RequestBody Student studentData) {
     //Temporary student which holds the information held in the Database.
     Optional<Student> optionalStudent = studentRepository.findById(id);
-    if (optionalStudent.isPresent()) {
+    if (!optionalStudent.isPresent()) {
       return ResponseEntity.notFound().build();
     }
     //update student data with the altered data.

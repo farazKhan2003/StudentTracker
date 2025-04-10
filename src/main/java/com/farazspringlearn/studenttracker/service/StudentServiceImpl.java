@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 
 /**
- * The implementation of the student service interface.
+ * The implementation of the studentm service interface.
  */
 
 @Service

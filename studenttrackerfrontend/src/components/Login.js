@@ -9,18 +9,18 @@ export default function Login({ onLogin }) {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const result = await fetch("http://localhost:8080/admin/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    const result = await fetch('http://localhost:8080/admin/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password }),
     });
 
     if (result.ok) {
-      alert("Login successful");
+      alert('Login successful');
       onLogin();
       navigate('/admin');
     } else {
-      alert("Your email or password is invalid");
+      alert('Your email or password is invalid');
     }
   };
 
@@ -29,10 +29,21 @@ export default function Login({ onLogin }) {
       <Paper elevation={3} style={{ padding: 20, marginTop: 40 }}>
         <Typography variant="h5">Admin Login</Typography>
         <form onSubmit={handleLogin}>
-          <TextField label="Username" fullWidth margin="normal"
-            value={username} onChange={(e) => setUsername(e.target.value)} />
-          <TextField label="Password" type="password" fullWidth margin="normal"
-            value={password} onChange={(e) => setPassword(e.target.value)} />
+          <TextField
+            label="Username"
+            fullWidth
+            margin="normal"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <TextField
+            label="Password"
+            type="password"
+            fullWidth
+            margin="normal"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
           <Button type="submit" variant="contained" color="primary" fullWidth>
             Login
           </Button>
