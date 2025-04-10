@@ -6,17 +6,22 @@ import AdminHome from './components/AdminHome';
 import Appbar from './components/Appbar';
 
 export default function App() {
-   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
 
   return (
     <Router>
-      <Appbar isAdminLoggedIn={isAdminLoggedIn} setIsAdminLoggedIn={setIsAdminLoggedIn} />
+      <Appbar
+        isAdminLoggedIn={isAdminLoggedIn}
+        setIsAdminLoggedIn={setIsAdminLoggedIn}
+      />
       <Routes>
-        <Route path="/" element={<Student/>} />
-        <Route path="/login" element={<Login onLogin={() => setIsAdminLoggedIn(true)} />} />
+        <Route path="/" element={<Student />} />
+        <Route
+          path="/login"
+          element={<Login onLogin={() => setIsAdminLoggedIn(true)} />}
+        />
         <Route path="/admin" element={<AdminHome />} />
       </Routes>
     </Router>
-    
   );
 }

@@ -1,6 +1,20 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { TextField, Container, Paper, Box, Button, ThemeProvider, Typography, Snackbar, IconButton, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import {
+  TextField,
+  Container,
+  Paper,
+  Box,
+  Button,
+  ThemeProvider,
+  Typography,
+  Snackbar,
+  IconButton,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from '@mui/material';
 import { createTheme, alpha, getContrastRatio } from '@mui/material/styles';
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -10,25 +24,29 @@ export default function AdminHome({ onAdminLogin }) {
   const [email, setEmail] = useState('');
   const [students, setStudents] = useState([]);
   const [open, setOpen] = React.useState(false);
-  
+
   // For handling edit dialog
   const [openEditDialog, setOpenEditDialog] = useState(false);
-  const [editStudent, setEditStudent] = useState({ id: '', name: '', email: '' });
+  const [editStudent, setEditStudent] = useState({
+    id: '',
+    name: '',
+    email: '',
+  });
 
   // Fetch student data
   const fetchStudents = () => {
-    fetch("http://localhost:8080/student/getall")
-      .then(result => result.json())
-      .then(result => setStudents(result))
-      .catch(error => console.error("Error fetching student data: ", error));
+    fetch('http://localhost:8080/student/getall')
+      .then((result) => result.json())
+      .then((result) => setStudents(result))
+      .catch((error) => console.error('Error fetching student data: ', error));
   };
 
   const handleClickSubmit = (e) => {
     e.preventDefault();
     const student = { name, email };
-    fetch("http://localhost:8080/student/add", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    fetch('http://localhost:8080/student/add', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(student),
     }).then(() => {
       setName('');
@@ -42,7 +60,9 @@ export default function AdminHome({ onAdminLogin }) {
   }, []);
 
   const handleDelete = (id) => {
-    const confirmed = window.confirm(`Are you sure you want to delete the student with id: ${id}?`);
+    const confirmed = window.confirm(
+      `Are you sure you want to delete the student with id: ${id}?`
+    );
     if (!confirmed) return;
 
     fetch(`http://localhost:8080/student/delete/${id}`, {
@@ -125,7 +145,9 @@ export default function AdminHome({ onAdminLogin }) {
     <ThemeProvider theme={theme}>
       <Container>
         <Paper elevation={4} style={paperStyle}>
-          <h1 style={{ color: "LightSlateGrey" }}><u>Add Student:</u></h1>
+          <h1 style={{ color: 'LightSlateGrey' }}>
+            <u>Add Student:</u>
+          </h1>
           <Box
             component="form"
             sx={{
@@ -165,17 +187,39 @@ export default function AdminHome({ onAdminLogin }) {
             <p>No Student data found</p>
           ) : (
             students.map((student) => (
-                <Paper elevation={6} style={{ margin: "10px", padding: "15px", textAlign: "left" }} key={student.id}>
+              <Paper
+                elevation={6}
+                style={{ margin: '10px', padding: '15px', textAlign: 'left' }}
+                key={student.id}
+              >
                 <div>
-                  ID: {student.id}<br />
-                  Name: {student.name}<br />
-                  Email Address: {student.email}<br />
+                  ID: {student.id}
+                  <br />
+                  Name: {student.name}
+                  <br />
+                  Email Address: {student.email}
+                  <br />
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px', marginTop: '10px' }}>
-                  <Button variant="contained" color="red" onClick={() => handleDelete(student.id)}>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    gap: '10px',
+                    marginTop: '10px',
+                  }}
+                >
+                  <Button
+                    variant="contained"
+                    color="red"
+                    onClick={() => handleDelete(student.id)}
+                  >
                     Delete
                   </Button>
-                  <Button variant="contained" color="primary" onClick={() => handleEdit(student)}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => handleEdit(student)}
+                  >
                     Edit
                   </Button>
                 </div>
@@ -184,35 +228,44 @@ export default function AdminHome({ onAdminLogin }) {
           )}
         </Paper>
 
-        <Dialog open={openEditDialog} onClose={() => setOpenEditDialog(false)} maxWidth="sm" fullWidth>
-  <DialogTitle>Edit Student</DialogTitle>
-  <DialogContent style={{ padding: '20px' }}>
-    <TextField
-      label="Name"
-      variant="outlined"
-      fullWidth
-      value={editStudent.name}
-      onChange={(e) => setEditStudent({...editStudent, name: e.target.value})}
-      style={{ marginBottom: '20px' }}
-    />
-    <TextField
-      label="Email"
-      variant="outlined"
-      fullWidth
-      value={editStudent.email}
-      onChange={(e) => setEditStudent({...editStudent, email: e.target.value})}
-      inputProps={{ style: { fontSize: '16px' } }} // Adjust font size if needed
-    />
-  </DialogContent>
-  <DialogActions>
-    <Button onClick={() => setOpenEditDialog(false)} color="secondary">
-      Cancel
-    </Button>
-    <Button onClick={handleUpdate} color="primary">
-      Save
-    </Button>
-  </DialogActions>
-</Dialog>
+        <Dialog
+          open={openEditDialog}
+          onClose={() => setOpenEditDialog(false)}
+          maxWidth="sm"
+          fullWidth
+        >
+          <DialogTitle>Edit Student</DialogTitle>
+          <DialogContent style={{ padding: '20px' }}>
+            <TextField
+              label="Name"
+              variant="outlined"
+              fullWidth
+              value={editStudent.name}
+              onChange={(e) =>
+                setEditStudent({ ...editStudent, name: e.target.value })
+              }
+              style={{ marginBottom: '20px' }}
+            />
+            <TextField
+              label="Email"
+              variant="outlined"
+              fullWidth
+              value={editStudent.email}
+              onChange={(e) =>
+                setEditStudent({ ...editStudent, email: e.target.value })
+              }
+              inputProps={{ style: { fontSize: '16px' } }} // Adjust font size if needed
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setOpenEditDialog(false)} color="secondary">
+              Cancel
+            </Button>
+            <Button onClick={handleUpdate} color="primary">
+              Save
+            </Button>
+          </DialogActions>
+        </Dialog>
 
         <Snackbar
           open={open}
