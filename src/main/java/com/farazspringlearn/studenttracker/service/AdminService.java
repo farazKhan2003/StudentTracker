@@ -8,6 +8,8 @@ import java.util.List;
 @Service
 public interface AdminService {
 
+
     Admin saveNewAdmin(Admin admin);
     List<Admin> getAllAdmins();
+    void createStartAdmin();
 }

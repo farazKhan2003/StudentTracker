@@ -16,6 +16,10 @@ export default function Appbar( {isAdminLoggedIn, setIsAdminLoggedIn }) {
     navigate('/login');
   };
 
+  const handleClickHome = () => {
+    navigate('/')
+  }
+
   const handleClickLogout = () => {
     setIsAdminLoggedIn(false);
     navigate('/');
@@ -39,7 +43,10 @@ export default function Appbar( {isAdminLoggedIn, setIsAdminLoggedIn }) {
               <Button color="inherit" onClick={handleClickLogout}>Logout</Button>
             </>
           ) : (
+            <>
+            <Button color="inherit" onClick={handleClickHome}>Home</Button>
             <Button color="inherit" onClick={handleClickLogin}>Admin Login</Button>
+            </>
           )}
 
         </Toolbar>
