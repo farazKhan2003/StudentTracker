@@ -16,7 +16,7 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Override
+   /* @Override
     public void createStartAdmin() {
         String rawPass = "adminpass";
         String hashedPass = passwordEncoder.encode(rawPass);
@@ -25,7 +25,7 @@ public class AdminServiceImpl implements AdminService {
         admin.setPassword(hashedPass);
 
         adminRepository.save(admin);
-    }
+    }*/
 ;
     @Override
     public Admin saveNewAdmin(Admin admin) {

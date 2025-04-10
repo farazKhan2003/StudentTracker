@@ -54,7 +54,6 @@ public class StudentController {
         student.setEmail(studentData.getEmail());
 
         studentRepository.save(student);
-        System.out.println("Updating student with id: " + id);
         return ResponseEntity.ok(student);
     }
  }

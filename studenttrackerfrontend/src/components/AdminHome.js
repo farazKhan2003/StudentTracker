@@ -195,7 +195,6 @@ export default function AdminHome({ onAdminLogin }) {
       value={editStudent.name}
       onChange={(e) => setEditStudent({...editStudent, name: e.target.value})}
       style={{ marginBottom: '20px' }}
-      inputProps={{ style: { fontSize: '16px' } }} // Adjust font size if needed
     />
     <TextField
       label="Email"

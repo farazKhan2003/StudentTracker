@@ -11,5 +11,5 @@ public interface AdminService {
 
     Admin saveNewAdmin(Admin admin);
     List<Admin> getAllAdmins();
-    void createStartAdmin();
+   // void createStartAdmin();
 }
