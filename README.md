@@ -1,5 +1,7 @@
 # Student Tracker Project
-This project is a full-stack application that enters and reads student data and attaches each student to a unique ID created for administration purposes when adding new students to a database.
+This project is a full-stack application that is used for administration purposes during the onboarding of new students. It has 2 faces:
+* Student - Enables students to add their name and email address
+* Admin - Enables administration to alter and delete student data
 
 ## Dev Stack:
 
@@ -7,7 +9,7 @@ This project is a full-stack application that enters and reads student data and 
 * Java
 * Springboot - JPA, MySQL and Lombok all utilised
 * MySQL Workbench
-* MySQL Database
+* MySQL
 * Postman
 
 ### Frontend:
@@ -23,6 +25,6 @@ This project is a full-stack application that enters and reads student data and 
 * IntelliJ - for back end
 
 ## Setup
-1) run backend using ./mvnw spring-boot:run or you can run the StudentTrackerApplication
+1) Run backend using ./mvnw spring-boot:run or you can run the StudentTrackerApplication
 2) run 'npm start' in vscode
-3) Run MySQL workbench if you want to query the database
+3) Open MySQL workbench and run the new studentSQL and adminSQL files in the repository package
