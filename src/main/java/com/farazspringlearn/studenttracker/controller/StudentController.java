@@ -1,6 +1,7 @@
 package com.farazspringlearn.studenttracker.controller;
 
 
+import com.farazspringlearn.studenttracker.repository.StudentRepository;
 import com.farazspringlearn.studenttracker.service.StudentService;
 import com.farazspringlearn.studenttracker.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,13 +10,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping("/student")
 @RestController
-@CrossOrigin
+@CrossOrigin()
 public class StudentController {
     @Autowired
     private StudentService studentService;
+
+    @Autowired
+    private StudentRepository studentRepository;
 
     @PostMapping("/add")
     public String add(@RequestBody Student student) {
@@ -37,4 +42,19 @@ public class StudentController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student not Found");
         }
     }
-}
+
+    @PutMapping("/alter/{id}")
+    public ResponseEntity<Student> alterStudent(@PathVariable int id, @RequestBody Student studentData) {
+        Optional<Student> optionalStudent = studentRepository.findById(id);
+        if (!optionalStudent.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        Student student = optionalStudent.get();
+        student.setName(studentData.getName());
+        student.setEmail(studentData.getEmail());
+
+        studentRepository.save(student);
+        System.out.println("Updating student with id: " + id);
+        return ResponseEntity.ok(student);
+    }
+ }
