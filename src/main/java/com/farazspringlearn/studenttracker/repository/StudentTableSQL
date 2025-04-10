@@ -1,0 +1,10 @@
+use studenttracker;
+
+drop table IF EXISTS student;
+
+create table student(
+	id integer not null auto_increment,
+    name text not null,
+    email text not null,
+    primary key(id)
+    );

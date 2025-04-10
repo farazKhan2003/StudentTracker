@@ -69,7 +69,6 @@ export default function AdminHome({ onAdminLogin }) {
       name: editStudent.name,
       email: editStudent.email,
     };
-    console.log('Updating student with id:', editStudent.id);
     fetch(`http://localhost:8080/student/alter/${updatedStudent.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },

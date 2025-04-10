@@ -1,0 +1,11 @@
+use studenttracker;
+
+drop table if exists admin;
+
+create table admin (
+	id integer not null auto_increment,
+    permission integer,
+    username text,
+    password text,
+    primary key(id)
+    );
