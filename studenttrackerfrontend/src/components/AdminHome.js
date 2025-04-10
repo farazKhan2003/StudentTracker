@@ -166,51 +166,55 @@ export default function AdminHome({ onAdminLogin }) {
             <p>No Student data found</p>
           ) : (
             students.map((student) => (
-              <Paper elevation={6} style={{ margin: "10px", padding: "15px", textAlign: "left" }} key={student.id}>
+                <Paper elevation={6} style={{ margin: "10px", padding: "15px", textAlign: "left" }} key={student.id}>
                 <div>
                   ID: {student.id}<br />
                   Name: {student.name}<br />
                   Email Address: {student.email}<br />
                 </div>
-                <Button variant="contained" color="red" onClick={() => handleDelete(student.id)}>
-                  Delete
-                </Button>
-                <Button variant="contained" color="primary" onClick={() => handleEdit(student)}>
-                  Edit
-                </Button>
+                <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px', marginTop: '10px' }}>
+                  <Button variant="contained" color="red" onClick={() => handleDelete(student.id)}>
+                    Delete
+                  </Button>
+                  <Button variant="contained" color="primary" onClick={() => handleEdit(student)}>
+                    Edit
+                  </Button>
+                </div>
               </Paper>
             ))
           )}
         </Paper>
 
-        <Dialog open={openEditDialog} onClose={() => setOpenEditDialog(false)}>
-          <DialogTitle>Edit Student</DialogTitle>
-          <DialogContent>
-            <TextField
-              label="Name"
-              variant="outlined"
-              fullWidth
-              value={editStudent.name}
-              onChange={(e) => setEditStudent({ ...editStudent, name: e.target.value })}
-              style={{ marginBottom: '10px' }}
-            />
-            <TextField
-              label="Email"
-              variant="outlined"
-              fullWidth
-              value={editStudent.email}
-              onChange={(e) => setEditStudent({ ...editStudent, email: e.target.value })}
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={() => setOpenEditDialog(false)} color="secondary">
-              Cancel
-            </Button>
-            <Button onClick={handleUpdate} color="primary">
-              Save
-            </Button>
-          </DialogActions>
-        </Dialog>
+        <Dialog open={openEditDialog} onClose={() => setOpenEditDialog(false)} maxWidth="sm" fullWidth>
+  <DialogTitle>Edit Student</DialogTitle>
+  <DialogContent style={{ padding: '20px' }}>
+    <TextField
+      label="Name"
+      variant="outlined"
+      fullWidth
+      value={editStudent.name}
+      onChange={(e) => setEditStudent({...editStudent, name: e.target.value})}
+      style={{ marginBottom: '20px' }}
+      inputProps={{ style: { fontSize: '16px' } }} // Adjust font size if needed
+    />
+    <TextField
+      label="Email"
+      variant="outlined"
+      fullWidth
+      value={editStudent.email}
+      onChange={(e) => setEditStudent({...editStudent, email: e.target.value})}
+      inputProps={{ style: { fontSize: '16px' } }} // Adjust font size if needed
+    />
+  </DialogContent>
+  <DialogActions>
+    <Button onClick={() => setOpenEditDialog(false)} color="secondary">
+      Cancel
+    </Button>
+    <Button onClick={handleUpdate} color="primary">
+      Save
+    </Button>
+  </DialogActions>
+</Dialog>
 
         <Snackbar
           open={open}
