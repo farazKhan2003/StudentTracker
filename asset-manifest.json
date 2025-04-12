@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.e6c13ad2.css",
-    "main.js": "/react-gh-pages/static/js/main.fd625065.js",
-    "static/js/453.d3d4bb8d.chunk.js": "/react-gh-pages/static/js/453.d3d4bb8d.chunk.js",
-    "index.html": "/react-gh-pages/index.html",
-    "main.e6c13ad2.css.map": "/react-gh-pages/static/css/main.e6c13ad2.css.map",
-    "main.fd625065.js.map": "/react-gh-pages/static/js/main.fd625065.js.map",
-    "453.d3d4bb8d.chunk.js.map": "/react-gh-pages/static/js/453.d3d4bb8d.chunk.js.map"
+    "main.css": "/StudentTracker/static/css/main.e6c13ad2.css",
+    "main.js": "/StudentTracker/static/js/main.d45c49f3.js",
+    "static/js/453.d3d4bb8d.chunk.js": "/StudentTracker/static/js/453.d3d4bb8d.chunk.js",
+    "index.html": "/StudentTracker/index.html",
+    "main.e6c13ad2.css.map": "/StudentTracker/static/css/main.e6c13ad2.css.map",
+    "main.d45c49f3.js.map": "/StudentTracker/static/js/main.d45c49f3.js.map",
+    "453.d3d4bb8d.chunk.js.map": "/StudentTracker/static/js/453.d3d4bb8d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.fd625065.js"
+    "static/js/main.d45c49f3.js"
   ]
 }
